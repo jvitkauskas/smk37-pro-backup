@@ -52,6 +52,12 @@ the USB data lines at power-on.
    keyboard's A-to-C cable plugged into the breakout.
 2. Keyboard off (it runs from its battery); Pico sending; keyboard switched
    on. The ROM acknowledged (both lines low), the Pico let go of the lines.
+   The Pico's LED shows where it is: slow blink while the unit is off, fast
+   blink once it is on, steady when the ROM has acknowledged (move the cable
+   now). The script only takes a short low pulse after a key as the
+   acknowledge: a switched-off unit holds the lines low much longer (the
+   FM-1 also lets them float up now and then), which an earlier version
+   mistook for one.
 3. The cable's A plug moved from the breakout to the PC. The keyboard
    enumerated as `WL80UBOOT1.00` (USB) / `WL82 UBOOT1.00` (SCSI disk).
 4. On Linux, with [jl-uboot-tool](https://github.com/kagaimiq/jl-uboot-tool)
